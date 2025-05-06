@@ -1,1 +1,27 @@
+{% extends "base.html" %}
 
+{% block title %}Главная | Ювелирные компании России{% endblock %}
+
+{% block content %}
+    <!-- Герой-секция -->
+    <div class="jumbotron text-center bg-light p-5 rounded">
+        <h1 class="display-4">Ведущие ювелирные компании России</h1>
+        <p class="lead">Лучшие бренды, эксклюзивные коллекции и история ювелирного искусства</p>
+    </div>
+
+    <!-- Карточки компаний -->
+    <div class="row">
+        {% for company in companies %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <img src="{{ url_for('static', filename='images/' + company.image) }}" class="card-img-top" alt="{{ company.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ company.name }}</h5>
+                    <p class="card-text">{{ company.description }}</p>
+                    <a href="#" class="btn btn-primary">Подробнее</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
